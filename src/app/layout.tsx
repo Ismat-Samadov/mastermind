@@ -23,9 +23,29 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full overflow-hidden">
+    <html lang="en" style={{ backgroundColor: '#050010', color: '#e0e0ff', height: '100%', overflow: 'hidden' }}>
+      {/* Inline critical CSS — loaded before any external stylesheet so the
+          page is never briefly unstyled. This guarantees dark-bg + light-text
+          regardless of Tailwind class loading order or browser quirks. */}
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: `
+          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+          html, body {
+            height: 100%;
+            overflow: hidden;
+            background-color: #050010;
+            color: #e0e0ff;
+          }
+          #__next, [data-nextjs-root-layout] {
+            height: 100%;
+            background-color: #050010;
+            color: #e0e0ff;
+          }
+        `}} />
+      </head>
       <body
-        className="h-full overflow-hidden bg-[#050010] text-white antialiased font-sans"
+        style={{ backgroundColor: '#050010', color: '#e0e0ff', height: '100%', overflow: 'hidden' }}
+        className="antialiased"
       >
         {children}
       </body>

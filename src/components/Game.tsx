@@ -122,7 +122,10 @@ export default function Game() {
   // ── Render ───────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen h-screen bg-[#050010] text-white flex flex-col overflow-hidden relative">
+    <div
+      className="min-h-screen h-screen flex flex-col overflow-hidden relative"
+      style={{ backgroundColor: '#050010', color: '#e0e0ff' }}
+    >
       {/* Dark neon background gradient */}
       <div
         className="fixed inset-0 pointer-events-none"

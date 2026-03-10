@@ -28,7 +28,10 @@ export default function DifficultyModal({ onStart, highScore }: Props) {
   const [mode, setMode] = useState<GameMode>('player-breaks');
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 overflow-y-auto bg-[#050010] text-white">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center p-4 overflow-y-auto"
+      style={{ backgroundColor: '#050010', color: '#e0e0ff' }}
+    >
       {/* Title */}
       <motion.div
         initial={{ opacity: 0, y: -28 }}

@@ -6,29 +6,13 @@
   --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Courier New', monospace;
 }
 
-/* ── Base ──────────────────────────────────────────────────────────────── */
-:root {
-  --background: #050010;
-  --foreground: #e0e0ff;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
+/* ── Hard-coded dark background + light text
+   These rules sit OUTSIDE any @layer so they win over all Tailwind utilities.
+   The inline styles in layout.tsx fire even earlier (before this file loads). ── */
 html,
 body {
   height: 100%;
-  overflow: hidden; /* game takes full viewport — inner elements scroll */
-  /* Force dark background and light text at the root level.
-     These declarations win over Tailwind Preflight which leaves bg transparent. */
-  background-color: #050010 !important;
-  color: #e0e0ff !important;
-}
-
-body {
+  overflow: hidden;
   background-color: #050010;
   color: #e0e0ff;
   -webkit-font-smoothing: antialiased;
@@ -36,42 +20,28 @@ body {
 }
 
 /* ── Custom scrollbar ─────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 3px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 255, 255, 0.25);
-  border-radius: 2px;
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,255,255,0.25); border-radius: 2px; }
 
 /* ── Focus ring ───────────────────────────────────────────────────────── */
 button:focus-visible {
-  outline: 2px solid rgba(0, 255, 255, 0.55);
+  outline: 2px solid rgba(0,255,255,0.55);
   outline-offset: 2px;
 }
 
-/* ── Neon glow utility classes ────────────────────────────────────────── */
+/* ── Neon glow utility ────────────────────────────────────────────────── */
 .neon-text-cyan {
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 24px rgba(0, 255, 255, 0.4);
+  text-shadow: 0 0 10px rgba(0,255,255,0.8), 0 0 24px rgba(0,255,255,0.4);
 }
 
-.glass-panel {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-/* ── Mobile safe-area padding ─────────────────────────────────────────── */
+/* ── Mobile safe-area ─────────────────────────────────────────────────── */
 .pb-safe {
   padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
 }
 
-/* ── Prevent accidental text selection on game UI ─────────────────────── */
-button,
-[role='button'] {
+/* ── Prevent tap highlight on game buttons ───────────────────────────── */
+button, [role='button'] {
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
