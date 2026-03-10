@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Dark background -->
+  <rect width="32" height="32" rx="7" fill="#050010"/>
+  <!-- Neon border -->
+  <rect width="32" height="32" rx="7" fill="none" stroke="rgba(0,255,255,0.4)" stroke-width="1"/>
+  <!-- Four colored pegs in 2×2 grid -->
+  <circle cx="10" cy="10" r="5.5" fill="#ff2d55" filter="url(#g)"/>
+  <circle cx="22" cy="10" r="5.5" fill="#0a84ff" filter="url(#g)"/>
+  <circle cx="10" cy="22" r="5.5" fill="#30d158" filter="url(#g)"/>
+  <circle cx="22" cy="22" r="5.5" fill="#ffd60a" filter="url(#g)"/>
+  <!-- Highlight dots -->
+  <circle cx="8.5" cy="8.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="20.5" cy="8.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="8.5" cy="20.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+  <circle cx="20.5" cy="20.5" r="1.5" fill="rgba(255,255,255,0.5)"/>
+</svg>

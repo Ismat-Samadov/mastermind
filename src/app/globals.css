@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/* ── Custom theme tokens ───────────────────────────────────────────────── */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', 'Courier New', monospace;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────────── */
+:root {
+  --background: #050010;
+  --foreground: #e0e0ff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden; /* game takes full viewport — inner elements scroll */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.25);
+  border-radius: 2px;
+}
+
+/* ── Focus ring ───────────────────────────────────────────────────────── */
+button:focus-visible {
+  outline: 2px solid rgba(0, 255, 255, 0.55);
+  outline-offset: 2px;
+}
+
+/* ── Neon glow utility classes ────────────────────────────────────────── */
+.neon-text-cyan {
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 0 0 24px rgba(0, 255, 255, 0.4);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── Mobile safe-area padding ─────────────────────────────────────────── */
+.pb-safe {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* ── Prevent accidental text selection on game UI ─────────────────────── */
+button,
+[role='button'] {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
